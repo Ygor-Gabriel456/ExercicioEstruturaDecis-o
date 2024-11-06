@@ -1,0 +1,63 @@
+(Pseudocódigo)
+Início
+    Declarar nota como real
+    Declarar somaNotas como real
+    Declarar contadorAprovados como inteiro
+
+    somaNotas ← 0
+    contadorAprovados ← 0
+
+    Para i de 1 até 80 faça
+        Escrever "Digite a nota do aluno ", i, ": "
+        Ler nota
+
+        Se nota < 0 ou nota > 10 então
+            Escrever "Nota inválida. Digite uma nota entre 0 e 10."
+            i ← i - 1  
+        Senão
+            somaNotas ← somaNotas + nota 
+            Se nota >= 6.0 então
+                contadorAprovados ← contadorAprovados + 1  
+            Fim Se
+        Fim Se
+    Fim Para
+
+    mediaNotas ← somaNotas / 80  
+    Escrever "Quantidade de alunos aprovados: ", contadorAprovados
+    Escrever "Média das notas da turma: ", mediaNotas
+Fim
+___________________________________________________________________
+(java)
+import java.util.Scanner;
+
+public class NotasTurma {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double nota;
+        double somaNotas = 0;
+        int contadorAprovados = 0;
+
+        for (int i = 1; i <= 80; i++) {
+            System.out.print("Digite a nota do aluno " + i + ": ");
+            nota = scanner.nextDouble();
+
+            if (nota < 0 || nota > 10) {
+                System.out.println("Nota inválida. Digite uma nota entre 0 e 10.");
+                i--; 
+            } else {
+                somaNotas += nota; 
+                if (nota >= 6.0) {
+                    contadorAprovados++; 
+                }
+            }
+        }
+
+        double mediaNotas = somaNotas / 80; 
+        System.out.println("Quantidade de alunos aprovados: " + contadorAprovados);
+        System.out.println("Média das notas da turma: " + mediaNotas);
+
+        scanner.close();
+    }
+}
+

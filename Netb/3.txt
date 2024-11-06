@@ -1,0 +1,46 @@
+(Pseudocódigo)
+Início
+    Declarar n como inteiro
+    Declarar S como real
+    S ← 0
+
+    Escrever "Digite um valor inteiro e positivo (n): "
+    Ler n
+
+    Se n > 0 então
+        Para i de 1 até n faça
+            S ← S + (1 / i)
+        Fim Para
+
+        Escrever "A soma S = ", S
+    Senão
+        Escrever "O valor deve ser um inteiro positivo."
+    Fim Se
+Fim
+_______________________________________________________________________
+(java)
+
+package somaharmonica;
+
+import java.util.Scanner;
+
+public class SomaHarmonica {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Digite um valor inteiro e positivo (n): ");
+        int n = scanner.nextInt();
+        
+        if(n > 0) {
+            double S = 0;
+            
+            for (int i = 1; i<= n; i++) {
+                S += 1.0/i;
+            }
+            System.out.println("A soma S = " + S);                  
+        } else {
+            System.out.println("O valor deve ser um número inteiro");
+        }
+    }   
+}

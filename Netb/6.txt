@@ -1,0 +1,82 @@
+(Pseudocódigo)
+Início
+    Declarar valor como real
+    Declarar contagemPositivos como inteiro
+    Declarar contagemNegativos como inteiro
+    Declarar menor como real
+
+    contagemPositivos ← 0
+    contagemNegativos ← 0
+    menor ← infinito  
+
+    Escrever "Digite os valores (digite 0 para encerrar):"
+
+    Enquanto verdadeiro faça
+        Ler valor
+        Se valor = 0 então
+            Parar  
+        Fim Se
+
+        Se valor > 0 então
+            contagemPositivos ← contagemPositivos + 1  
+        Senão
+            contagemNegativos ← contagemNegativos + 1  
+        Fim Se
+
+        Se valor < menor então
+            menor ← valor  
+        Fim Se
+    Fim Enquanto
+
+    Escrever "Total de valores positivos: ", contagemPositivos
+    Escrever "Total de valores negativos: ", contagemNegativos
+
+    Se contagemPositivos + contagemNegativos > 0 então
+        Escrever "O menor valor é: ", menor
+    Senão
+        Escrever "Nenhum valor foi processado."
+    Fim Se
+Fim
+______________________________________________________________
+import java.util.Scanner;
+
+public class ContagemValores {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double valor;
+        int contagemPositivos = 0;
+        int contagemNegativos = 0;
+        double menor = Double.POSITIVE_INFINITY; 
+
+        System.out.println("Digite os valores (digite 0 para encerrar):");
+
+        while (true) {
+            valor = scanner.nextDouble();
+            if (valor == 0) {
+                break; 
+            }
+
+            if (valor > 0) {
+                contagemPositivos++;
+            } else {
+                contagemNegativos++; 
+            }
+
+            if (valor < menor) {
+                menor = valor; 
+            }
+        }
+
+        System.out.println("Total de valores positivos: " + contagemPositivos);
+        System.out.println("Total de valores negativos: " + contagemNegativos);
+
+        if (contagemPositivos + contagemNegativos > 0) {
+            System.out.println("O menor valor é: " + menor);
+        } else {
+            System.out.println("Nenhum valor foi processado.");
+        }
+
+        scanner.close();
+    }
+}

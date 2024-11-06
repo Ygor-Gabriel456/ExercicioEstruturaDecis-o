@@ -1,0 +1,29 @@
+(Pseudocódigo)
+Início
+    
+    Escrever "Números de 1 a 50:"
+    Para i de 1 até 50 faça
+        Escrever i
+    Fim Para
+
+    Escrever "Números de 52 a 100 de 2 em 2:"
+    Para j de 52 até 100, com passo 2 faça
+        Escrever j
+    Fim Para
+Fim
+_____________________________________________
+(java)
+
+package números;
+
+public class Números {
+
+    public static void main(String[] args) {
+        for (int i = 1; i <=50; i++) {
+            System.out.println(i);
+        }
+        for (int j = 52; j <= 100; j+=2) {
+            System.out.println(j);
+        }
+    }  
+}

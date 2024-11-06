@@ -1,0 +1,123 @@
+(Pseudocódigo)
+Início
+    Declarar idade como inteiro
+    Declarar sexo como caractere
+    Declarar salario como real
+    Declarar somaIdades como real
+    Declarar somaSalariosHomens como real
+    Declarar contadorHomens como inteiro
+    Declarar contadorTotal como inteiro
+    Declarar contadorMulheresBaixoSalario como inteiro
+
+    somaIdades ← 0
+    somaSalariosHomens ← 0
+    contadorHomens ← 0
+    contadorTotal ← 0
+    contadorMulheresBaixoSalario ← 0
+
+    Escrever "Digite os dados dos habitantes (digite uma idade negativa para encerrar):"
+
+    Enquanto verdadeiro faça
+        Escrever "Idade: "
+        Ler idade
+        Se idade < 0 então
+            Parar  
+        Fim Se
+
+        Escrever "Sexo (M/F): "
+        Ler sexo
+        Escrever "Salário: "
+        Ler salario
+
+        somaIdades ← somaIdades + idade  
+        contadorTotal ← contadorTotal + 1  
+
+        Se sexo = 'M' então
+            somaSalariosHomens ← somaSalariosHomens + salario  
+            contadorHomens ← contadorHomens + 1  
+        Senão Se sexo = 'F' então
+            Se salario < 600.0 então
+                contadorMulheresBaixoSalario ← contadorMulheresBaixoSalario + 1  
+            Fim Se
+        Fim Se
+    Fim Enquanto
+
+    Se contadorTotal > 0 então
+        mediaIdade ← somaIdades / contadorTotal  
+        Escrever "A média de idade do grupo é: ", mediaIdade
+    Senão
+        Escrever "Nenhum dado foi processado."
+    Fim Se
+
+    Se contadorHomens > 0 então
+        mediaSalarioHomens ← somaSalariosHomens / contadorHomens  
+        Escrever "A média de salários dos homens é: ", mediaSalarioHomens
+    Senão
+        Escrever "Nenhum homem foi cadastrado."
+    Fim Se
+
+    Escrever "Quantidade de mulheres com salário abaixo de R$600,00: ", contadorMulheresBaixoSalario
+Fim
+____________________________________________________________________________________________________
+(java)
+import java.util.Scanner;
+
+public class PesquisaHabitantes {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int idade;
+        char sexo;
+        double salario;
+        double somaIdades = 0;
+        double somaSalariosHomens = 0;
+        int contadorHomens = 0;
+        int contadorTotal = 0;
+        int contadorMulheresBaixoSalario = 0;
+
+        System.out.println("Digite os dados dos habitantes (digite uma idade negativa para encerrar):");
+
+        while (true) {
+            System.out.print("Idade: ");
+            idade = scanner.nextInt();
+            if (idade < 0) {
+                break; 
+            }
+
+            System.out.print("Sexo (M/F): ");
+            sexo = scanner.next().charAt(0);
+            System.out.print("Salário: ");
+            salario = scanner.nextDouble();
+
+            somaIdades += idade; 
+            contadorTotal++; 
+
+            if (sexo == 'M') {
+                somaSalariosHomens += salario; 
+                contadorHomens++; 
+            } else if (sexo == 'F') {
+                if (salario < 600.0) {
+                    contadorMulheresBaixoSalario++; 
+                }
+            }
+        }
+
+        if (contadorTotal > 0) {
+            double mediaIdade = somaIdades / contadorTotal; 
+            System.out.println("A média de idade do grupo é: " + mediaIdade);
+        } else {
+            System.out.println("Nenhum dado foi processado.");
+        }
+
+        if (contadorHomens > 0) {
+            double mediaSalarioHomens = somaSalariosHomens / contadorHomens; 
+            System.out.println("A média de salários dos homens é: " + mediaSalarioHomens);
+        } else {
+            System.out.println("Nenhum homem foi cadastrado.");
+        }
+
+        System.out.println("Quantidade de mulheres com salário abaixo de R$600,00: " + contadorMulheresBaixoSalario);
+
+        scanner.close();
+    }
+}

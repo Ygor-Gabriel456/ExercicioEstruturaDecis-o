@@ -1,0 +1,103 @@
+(Pseudocódigo)
+Início
+    Declarar sexo como caractere
+    Declarar altura como real
+    Declarar somaAlturaMulheres como real
+    Declarar somaAlturaHomens como real
+    Declarar contadorMulheres como inteiro
+    Declarar contadorHomens como inteiro
+
+    somaAlturaMulheres ← 0
+    somaAlturaHomens ← 0
+    contadorMulheres ← 0
+    contadorHomens ← 0
+
+    Escrever "Digite as informações (digite 'F' para mulher, 'M' para homem, e '0' para encerrar):"
+
+    Enquanto verdadeiro faça
+        Escrever "Sexo (F/M): "
+        Ler sexo
+        Se sexo = '0' então
+            Parar  
+        Fim Se
+
+        Escrever "Altura: "
+        Ler altura
+
+        Se sexo = 'F' então
+            somaAlturaMulheres ← somaAlturaMulheres + altura
+            contadorMulheres ← contadorMulheres + 1
+        Senão Se sexo = 'M' então
+            somaAlturaHomens ← somaAlturaHomens + altura
+            contadorHomens ← contadorHomens + 1
+        Fim Se
+    Fim Enquanto
+
+    Se contadorMulheres > 0 então
+        mediaAlturaMulheres ← somaAlturaMulheres / contadorMulheres
+        Escrever "A altura média das mulheres é: ", mediaAlturaMulheres
+    Senão
+        Escrever "Nenhuma mulher foi cadastrada."
+    Fim Se
+
+    Se contadorHomens > 0 então
+        mediaAlturaHomens ← somaAlturaHomens / contadorHomens
+        Escrever "A altura média dos homens é: ", mediaAlturaHomens
+    Senão
+        Escrever "Nenhum homem foi cadastrado."
+    Fim Se
+Fim
+____________________________________________________________________________________________________
+(java)
+import java.util.Scanner;
+
+public class AlturaMediaSexo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        char sexo;
+        double altura;
+        double somaAlturaMulheres = 0;
+        double somaAlturaHomens = 0;
+        int contadorMulheres = 0;
+        int contadorHomens = 0;
+
+        System.out.println("Digite as informações (digite '0' para encerrar):");
+
+        while (true) {
+            System.out.print("Sexo (F/M): ");
+            sexo = scanner.next().charAt(0);
+            if (sexo == '0') {
+                break; 
+            }
+
+            System.out.print("Altura: ");
+            altura = scanner.nextDouble();
+
+            if (sexo == 'F') {
+                somaAlturaMulheres += altura;
+                contadorMulheres++;
+            } else if (sexo == 'M') {
+                somaAlturaHomens += altura;
+                contadorHomens++;
+            }
+        }
+
+        if (contadorMulheres > 0) {
+            double mediaAlturaMulheres = somaAlturaMulheres / contadorMulheres;
+            System.out.println("A altura média das mulheres é: " + mediaAlturaMulheres);
+        } else {
+            System.out.println("Nenhuma mulher foi cadastrada.");
+        }
+
+        if (contadorHomens > 0) {
+            double mediaAlturaHomens = somaAlturaHomens / contadorHomens;
+            System.out.println("A altura média dos homens é: " + mediaAlturaHomens);
+        } else {
+            System.out.println("Nenhum homem foi cadastrado.");
+        }
+
+        scanner.close();
+    }
+}
+

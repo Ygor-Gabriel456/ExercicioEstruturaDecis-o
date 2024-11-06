@@ -1,0 +1,56 @@
+(Pseudocódigo)
+
+Início
+    Declarar n como inteiro       
+    Declarar soma como real       
+    Declarar media como real       
+
+    Escrever "Digite a quantidade de valores que serão processados: "
+    Ler n
+
+    soma ← 0
+
+    Para i de 1 até n faça
+        Declarar valor como real   
+        Escrever "Digite o valor ", i, ": "
+        Ler valor
+        soma ← soma + valor     
+    Fim Para
+
+    Se n > 0 então
+        media ← soma / n         
+        Escrever "A média dos valores é: ", media
+    Senão
+        Escrever "Nenhum valor foi processado."
+    Fim Se
+Fim
+_____________________________________________________________________
+(java)
+
+import java.util.Scanner;
+
+public class MediaValores {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Digite a quantidade de valores que serão processados: ");
+        int n = scanner.nextInt();
+        
+        double soma = 0;  
+
+        if (n > 0) {
+            for (int i = 1; i <= n; i++) {
+                System.out.print("Digite o valor " + i + ": ");
+                double valor = scanner.nextDouble();
+                soma += valor;  
+            }
+            
+            double media = soma / n;  
+            System.out.println("A média dos valores é: " + media);
+        } else {
+            System.out.println("Nenhum valor foi processado.");
+        }
+        
+        scanner.close();
+    }
+}
